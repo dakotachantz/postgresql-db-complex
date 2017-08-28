@@ -1,10 +1,4 @@
--- id -- a serial primary key
--- title -- not optional, string up to 255 characters
--- details -- optional, holds a large amount of text
--- priority -- not optional, an integer. Default is 1.
--- created_at -- not optional. A date and time.
--- completed_at -- optional. A date a time.
-
+-- CREATED TABLE
 CREATE TABLE todos (
     id SERIAL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
@@ -14,8 +8,22 @@ CREATE TABLE todos (
     completed_at TIMESTAMP NULL
 );
 
+-- INSERTED TODOS
 INSERT INTO todos(title, created_at) VALUES ('finish backend end part of tiy course', now());
 INSERT INTO todos(title, created_at, completed_at) VALUES ('finish front end part of tiy course', now(), now());
-INSERT INTO todos()
+INSERT INTO todos(title, created_at) VALUES ('discover the meaning of life', now()), ('learn to speak latin', now()), ('become the most interesting man in the world', now());
 
-SELECT * FROM todos;
+-- FIND ALL TODOS
+SELECT * FROM todos; 
+
+-- FIND ALL INCOMPLETE TODOS
+SELECT * FROM todos WHERE completed_at IS NULL;
+
+-- FIND ALL TODOS WITH PRIORITY ABOVE 1
+SELECT * FROM todos WHERE priority > 1;
+
+-- UPDATE ONE TODO TO COMPLETE BY ITS ID
+UPDATE todos SET completed_at = now() WHERE id = 5;
+
+-- DELETE ALL COMPLETED TODOS
+DELETE FROM todos WHERE completed_at IS NOT NULL;
