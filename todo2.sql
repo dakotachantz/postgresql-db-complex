@@ -5,7 +5,7 @@ VALUES
     ('Finish weekly project', 2, '2017-8-25 08:00:00'),
     ('Get the high score on galaga', 4, '1986-01-01 10:05:10'),
     ('Call my sister', 1, now()),
-    ('Annoy Zach', 11, '1999-01-08 04:05:06'),
+    ('Annoy Zach', 10, '1999-01-08 04:05:06'),
     ('Walk the dog', 3, now()),
     ('Get my first developer gig', 10, '1994-07-07 16:41:41'),
     ('Solve the worlds most interesting questions', 5, now()),
@@ -25,4 +25,27 @@ VALUES
     ('Do not dress like a 10 year old', 6, '2015-9-17 06:50:00', '2017-8-11 17:00:00'),
     ('Ask John a question', 8, '2017-7-25 15:00:00', '2017-8-01 06:45:00'),
     ('Eat lots of tacos not on a tuesday', 10, now(), now()),
-    ('Eat chips and delicious queso', 9, now(), now()); 
+    ('Eat chips and delicious queso', 9, now(), now());
+-- SELECT ALL INCOMPLETE TODOS WITH PRIORITY 3
+SELECT *
+FROM todos
+WHERE priority = 3 AND completed_at IS NULL;
+-- SELECT NUMBER OF INCOMPLETE TODOS BY PRIORITY
+SELECT COUNT(priority), priority
+FROM todos
+WHERE completed_at IS NULL
+GROUP BY priority
+ORDER BY priority DESC;
+-- SELECT NUMBER OF TODOS BY PRIORITY CREATED LAST 30 DAYS
+SELECT COUNT(priority), priority
+FROM todos
+WHERE created_at < (now() - (INTERVAL
+'30 days'))
+GROUP BY priority
+ORDER BY priority DESC;
+-- SELECT NEXT DO BY HIGHEST PRIORITY THAT WAS CREATED FIRST
+SELECT title, priority, created_at
+FROM todos
+WHERE completed_at IS NULL
+ORDER BY priority DESC, created_at
+LIMIT 1;
