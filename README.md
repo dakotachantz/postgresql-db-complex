@@ -3,9 +3,9 @@
 Create and use a PostgreSQL database for storing todo items.
 ---
 
-## Part One: Create a PostgreSQL database called todolist with a table called todos to be used for storing todo items.
+### Part One: Create a PostgreSQL database called todolist with a table called todos to be used for storing todo items.
 
-Each item should have the following fields: 
+#### Each item should have the following fields: 
 ---
 
 * id -- a serial primary key
@@ -16,7 +16,7 @@ Each item should have the following fields:
 * completed_at -- optional. A date a time.
 
 
-In a file called todo.sql:
+#### In a file called todo.sql:
 ---
 
 * Write the CREATE TABLE statement to make this table.
@@ -26,9 +26,9 @@ In a file called todo.sql:
 * Write an UPDATE statement to complete one todo by its id. Your ids may differ, so you will choose the id to up.
 * Write a DELETE statement to delete all completed todos.
 
-## Part Two: Write more complex SQL statements
+### Part Two: Write more complex SQL statements
 
-Using your todolist database, write more SQL commands.
+### Using your todolist database, write more SQL commands.
 ---
 
 Using the todolist database from the previous project, write another set of SQL statements in a file called todo2.sql.
